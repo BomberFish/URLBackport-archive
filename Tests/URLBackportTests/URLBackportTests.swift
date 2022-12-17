@@ -50,4 +50,67 @@ final class URLBackportTests: XCTestCase {
       URL.backport(filePath: path, directoryHint: .inferFromPath, relativeTo: nil)
     )
   }
+
+  func testAppendingDirectoryPath() {
+    let url = URL(filePath: "/")
+    let path = "path"
+    XCTAssertEqual(
+      url.appending(path: path, directoryHint: .isDirectory),
+      url.backport.appending(path: path, directoryHint: .isDirectory)
+    )
+  }
+
+  func testAppendingFilePath() {
+    let url = URL(filePath: "/")
+    let path = "path"
+    XCTAssertEqual(
+      url.appending(path: path, directoryHint: .notDirectory),
+      url.backport.appending(path: path, directoryHint: .notDirectory)
+    )
+  }
+
+  func testAppendingExistingPath() {
+    let url = URL(filePath: NSHomeDirectory())
+    let path = "Library"
+    XCTAssertEqual(
+      url.appending(path: path, directoryHint: .checkFileSystem),
+      url.backport.appending(path: path, directoryHint: .checkFileSystem)
+    )
+  }
+
+  func testAppendingNotExistingPath() {
+    let url = URL(filePath: NSHomeDirectory())
+    let path = "ライブラリー"
+    XCTAssertEqual(
+      url.appending(path: path, directoryHint: .checkFileSystem),
+      url.backport.appending(path: path, directoryHint: .checkFileSystem)
+    )
+  }
+
+  func testAppendingPathHavingTrailingSlash() {
+    let url = URL(filePath: "/")
+    let path = "path/"
+    XCTAssertEqual(
+      url.appending(path: path, directoryHint: .inferFromPath),
+      url.backport.appending(path: path, directoryHint: .inferFromPath)
+    )
+  }
+
+  func testAppendingPathNotHavingTrailingSlash() {
+    let url = URL(filePath: "/")
+    let path = "path"
+    XCTAssertEqual(
+      url.appending(path: path, directoryHint: .inferFromPath),
+      url.backport.appending(path: path, directoryHint: .inferFromPath)
+    )
+  }
+
+  func testAppendingQueryItems() {
+    let url = URL(filePath: "/")
+    let queryItems = [URLQueryItem(name: "name", value: "value")]
+    XCTAssertEqual(
+      url.appending(queryItems: queryItems),
+      url.backport.appending(queryItems: queryItems)
+    )
+  }
 }

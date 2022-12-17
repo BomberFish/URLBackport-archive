@@ -26,6 +26,16 @@ public extension URL.Backport {
     case checkFileSystem
     case inferFromPath
   }
+
+  func appending<S>(path: S, directoryHint: URL.Backport.DirectoryHint = .inferFromPath) -> URL where S: StringProtocol {
+    return base.appendingPathComponent(String(path), isDirectory: String(path).isDirectory(hint: directoryHint))
+  }
+
+  func appending(queryItems: [URLQueryItem]) -> URL {
+    guard var urlComponents = URLComponents(url: base, resolvingAgainstBaseURL: true) else { return base }
+    urlComponents.queryItems = (urlComponents.queryItems ?? []) + queryItems
+    return urlComponents.url ?? base
+  }
 }
 
 private extension String {
