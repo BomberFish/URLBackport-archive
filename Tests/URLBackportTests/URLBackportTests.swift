@@ -51,6 +51,113 @@ final class URLBackportTests: XCTestCase {
     )
   }
 
+  func testHomeDirectory() {
+    XCTAssertEqual(
+      URL.homeDirectory,
+      URL.backport.homeDirectory
+    )
+  }
+
+  func testTemporaryDirectory() {
+    XCTAssertEqual(
+      URL.temporaryDirectory,
+      URL.backport.temporaryDirectory
+    )
+  }
+
+  func testCachesDirectory() {
+    XCTAssertEqual(
+      URL.cachesDirectory,
+      URL.backport.cachesDirectory
+    )
+  }
+
+  func testApplicationDirectory() {
+    XCTAssertEqual(
+      URL.applicationDirectory,
+      URL.backport.applicationDirectory
+    )
+  }
+
+  func testLibraryDirectory() {
+    XCTAssertEqual(
+      URL.libraryDirectory,
+      URL.backport.libraryDirectory
+    )
+  }
+
+  func testUserDirectory() {
+    XCTAssertEqual(
+      URL.userDirectory,
+      URL.backport.userDirectory
+    )
+  }
+
+  func testDocumentsDirectory() {
+    XCTAssertEqual(
+      URL.documentsDirectory,
+      URL.backport.documentsDirectory
+    )
+  }
+
+  func testDesktopDirectory() {
+    XCTAssertEqual(
+      URL.desktopDirectory,
+      URL.backport.desktopDirectory
+    )
+  }
+
+  func testApplicationSupportDirectory() {
+    XCTAssertEqual(
+      URL.applicationSupportDirectory,
+      URL.backport.applicationSupportDirectory
+    )
+  }
+
+  func testDownloadsDirectory() {
+    XCTAssertEqual(
+      URL.downloadsDirectory,
+      URL.backport.downloadsDirectory
+    )
+  }
+
+  func testMoviesDirectory() {
+    XCTAssertEqual(
+      URL.moviesDirectory,
+      URL.backport.moviesDirectory
+    )
+  }
+
+  func testMusicDirectory() {
+    XCTAssertEqual(
+      URL.musicDirectory,
+      URL.backport.musicDirectory
+    )
+  }
+
+  func testPicturesDirectory() {
+    XCTAssertEqual(
+      URL.picturesDirectory,
+      URL.backport.picturesDirectory
+    )
+  }
+
+  func testSharedPublicDirectory() {
+    XCTAssertEqual(
+      URL.sharedPublicDirectory,
+      URL.backport.sharedPublicDirectory
+    )
+  }
+
+  #if os(macOS)
+  func testTrashDirectory() {
+    XCTAssertEqual(
+      URL.trashDirectory,
+      URL.backport.trashDirectory
+    )
+  }
+  #endif
+
   func testAppendingDirectoryPath() {
     let url = URL(filePath: "/")
     let path = "path"
@@ -111,6 +218,21 @@ final class URLBackportTests: XCTestCase {
     XCTAssertEqual(
       url.appending(queryItems: queryItems),
       url.backport.appending(queryItems: queryItems)
+    )
+  }
+
+  func testCurrentDirectory() {
+    XCTAssertEqual(
+      URL.currentDirectory(),
+      URL.backport.currentDirectory()
+    )
+  }
+
+  func testHomeDirectoryForUser() {
+    let user = NSUserName()
+    XCTAssertEqual(
+      URL.homeDirectory(forUser: user),
+      URL.backport.homeDirectory(forUser: user)
     )
   }
 }
