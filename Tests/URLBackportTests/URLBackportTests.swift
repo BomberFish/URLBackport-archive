@@ -158,6 +158,126 @@ final class URLBackportTests: XCTestCase {
   }
   #endif
 
+  func testUserPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.user = "ユーザー"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.user(percentEncoded: true),
+      url.backport.user(percentEncoded: true)
+    )
+  }
+
+  func testUserNotPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.user = "ユーザー"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.user(percentEncoded: false),
+      url.backport.user(percentEncoded: false)
+    )
+  }
+
+  func testPasswordPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.password = "パスワード"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.password(percentEncoded: true),
+      url.backport.password(percentEncoded: true)
+    )
+  }
+
+  func testPasswordNotPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.password = "パスワード"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.password(percentEncoded: false),
+      url.backport.password(percentEncoded: false)
+    )
+  }
+
+  func testHostPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.host = "ホスト"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.host(percentEncoded: true),
+      url.backport.host(percentEncoded: true)
+    )
+  }
+
+  func testHostNotPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.host = "ホスト"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.host(percentEncoded: false),
+      url.backport.host(percentEncoded: false)
+    )
+  }
+
+  func testPathPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.path = "パス"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.path(percentEncoded: true),
+      url.backport.path(percentEncoded: true)
+    )
+  }
+
+  func testPathNotPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.path = "パス"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.path(percentEncoded: false),
+      url.backport.path(percentEncoded: false)
+    )
+  }
+
+  func testQueryPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.query = "クエリ"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.query(percentEncoded: true),
+      url.backport.query(percentEncoded: true)
+    )
+  }
+
+  func testQueryNotPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.query = "クエリ"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.query(percentEncoded: false),
+      url.backport.query(percentEncoded: false)
+    )
+  }
+
+  func testFragmentPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.fragment = "フラグメント"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.fragment(percentEncoded: true),
+      url.backport.fragment(percentEncoded: true)
+    )
+  }
+
+  func testFragmentNotPercentEncoded() {
+    var urlComponents = URLComponents()
+    urlComponents.fragment = "フラグメント"
+    let url = urlComponents.url!
+    XCTAssertEqual(
+      url.fragment(percentEncoded: false),
+      url.backport.fragment(percentEncoded: false)
+    )
+  }
+
   func testAppendingDirectoryPath() {
     let url = URL(filePath: "/")
     let path = "path"

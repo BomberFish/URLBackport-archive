@@ -93,6 +93,54 @@ public extension URL.Backport {
     try! URL.backport(for: .trashDirectory, in: .userDomainMask)
   }
 
+  func user(percentEncoded: Bool = true) -> String? {
+    if percentEncoded {
+      return base.user?.addingPercentEncoding(withAllowedCharacters: .urlUserAllowed)
+    } else {
+      return base.user
+    }
+  }
+
+  func password(percentEncoded: Bool = true) -> String? {
+    if percentEncoded {
+      return base.password
+    } else {
+      return base.password?.removingPercentEncoding
+    }
+  }
+
+  func host(percentEncoded: Bool = true) -> String? {
+    if percentEncoded {
+      return base.host?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+    } else {
+      return base.host
+    }
+  }
+
+  func path(percentEncoded: Bool = true) -> String {
+    if percentEncoded {
+      return base.path.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+    } else {
+      return base.path
+    }
+  }
+
+  func query(percentEncoded: Bool = true) -> String? {
+    if percentEncoded {
+      return base.query
+    } else {
+      return base.query?.removingPercentEncoding
+    }
+  }
+
+  func fragment(percentEncoded: Bool = true) -> String? {
+    if percentEncoded {
+      return base.fragment
+    } else {
+      return base.fragment?.removingPercentEncoding
+    }
+  }
+
   func appending<S>(path: S, directoryHint: URL.Backport.DirectoryHint = .inferFromPath) -> URL where S: StringProtocol {
     return base.appendingPathComponent(String(path), isDirectory: String(path).isDirectory(hint: directoryHint))
   }
