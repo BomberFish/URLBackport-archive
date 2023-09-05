@@ -1,5 +1,7 @@
 # URLBackport
 
+> This is an archive of version 1.0 of [URLBackport](https://github.com/woxtu/URLBackport) from my Xcode cache. Original by woxtu, who seems to have deleted their GitHub account.
+
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg?style=flat-square)](https://github.com/apple/swift-package-manager)
 
 A backport of the new API added to [`URL`](https://developer.apple.com/documentation/foundation/url) in iOS 16.
@@ -60,7 +62,7 @@ This package provides the following API:
 ### Swift Package Manager
 
 ```swift
-.package(url: "https://github.com/woxtu/URLBackport.git", from: "1.0.0")
+.package(url: "https://github.com/BomberFish/URLBackport-archive.git", from: "1.0.0")
 ```
 
 ## License
