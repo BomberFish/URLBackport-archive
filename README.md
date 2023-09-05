@@ -1,6 +1,6 @@
 # URLBackport
 
-> This is an archive of version 1.0 of [URLBackport](https://github.com/woxtu/URLBackport) from my Xcode cache. Original by woxtu, who seems to have deleted the repository.
+> This is an archive of version 1.0 of [URLBackport](https://github.com/woxtu/URLBackport) from my Xcode cache. Original by [woxtu](https://github.com/woxtu), who seems to have deleted the repository.
 
 [![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg?style=flat-square)](https://github.com/apple/swift-package-manager)
 
